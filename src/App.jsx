@@ -34,21 +34,29 @@ function FlatFileWithDeprecatedHook() {
   );
 }
 
-function FlatFileWithProvider() {
-  const { openPortal } = useFlatfile();
-  return <FlatfileProvider publishableKey={publishableKey}>
+function SheetConfig() {
+  const {openPortal} = useFlatfile();
+  return <>
     <h2>Flatfile with Provider</h2>
     <p>The official code from the quickstart is not working.</p>
-    <p>source: <a href={"https://flatfile.com/docs/apps/embedding/react/new_space_quickstart"}>https://flatfile.com/docs/apps/embedding/react/new_space_quickstart</a></p>
+    <p>source: <a
+      href={"https://flatfile.com/docs/apps/embedding/react/new_space_quickstart"}>https://flatfile.com/docs/apps/embedding/react/new_space_quickstart</a>
+    </p>
     <button onClick={openPortal}>Open Portal</button>
-    <Sheet config={sheet} />
+    <Sheet config={sheet}/>
+  </>;
+}
+
+function FlatFileWithProvider() {
+  return <FlatfileProvider publishableKey={publishableKey}>
+      <SheetConfig />
   </FlatfileProvider>
 }
 
 export default function App() {
   return <>
-    <FlatFileWithDeprecatedHook />
+    <FlatFileWithDeprecatedHook/>
     <hr/>
-    <FlatFileWithProvider />
+    <FlatFileWithProvider/>
   </>;
 }
